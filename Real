@@ -48,7 +48,7 @@ end
 print("Loading start")
 
 if _G.ardour then
-    Notify("Ardour", "Script is already loaded")
+    Notify("Not Skidded fr", "Script is already loaded")
     return
 end
 
@@ -65,7 +65,7 @@ if string.match(exec, "Synapse") == nil and string.match(exec, "Macsploit") == n
         getconnections(game.ChildAdded)
     end)
     if reqtest == true and filetest == true and connecttest == true then else
-        Notify("Ardour", "Sorry, your executor cant run this script")
+        Notify("Might be skidded", "Sorry, your executor cant run this script")
         return
     end
 
@@ -75,17 +75,17 @@ if string.match(exec, "Synapse") == nil and string.match(exec, "Macsploit") == n
         drawing1:Destroy()
     end)
     if libtest == false then
-        Notify("Ardour", "Wait while we install drawing lib for you")
+        Notify("Ok, probally skidded", "Wait while we install drawing lib for you")
         local lib = game:HttpGet("https://drive.google.com/uc?export=download&id=1xDwhcJeZMMaGsOhRTM1oZw0TgklkDIwP")
         loadstring(lib)()
-        Notify("Ardour", "Drawing lib installed!, Script is loading")
+        Notify("Maybe a high chance of skidding", "Drawing lib installed!, Script is loading")
     else
-        Notify("Ardour", "Loading. Using " .. exec .. " (Half supported)")
+        Notify("Sharkyz was here", "Loading. Using " .. exec .. " (Half supported)")
     end
 
     Notify("WARNING", "We do not guarantee that the script will work on your injector!")
 else
-    Notify("Ardour", "Loading. Using " .. exec .. " (Full supported)")
+    Notify("Ima touch you", "Loading. Using " .. exec .. " (Full supported)")
 end
 
 if game.Players.LocalPlayer.Character == nil or not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
@@ -160,26 +160,6 @@ local selftrack_update = 0
 allvars.hitmarkbool = false
 allvars.hitmarkcolor = Color3.fromRGB(255,255,255)
 allvars.hitmarkfade = 2
-allvars.hitsoundbool = false
-allvars.hitsoundhead = "Ding"
-allvars.hitsoundbody = "Blackout"
-local hitsoundlib = {
-    ["TF2"]       = "rbxassetid://8255306220",
-    ["Gamesense"] = "rbxassetid://4817809188",
-    ["Rust"]      = "rbxassetid://1255040462",
-    ["Neverlose"] = "rbxassetid://8726881116",
-    ["Bubble"]    = "rbxassetid://198598793",
-    ["Quake"]     = "rbxassetid://1455817260",
-    ["Among-Us"]  = "rbxassetid://7227567562",
-    ["Ding"]      = "rbxassetid://2868331684",
-    ["Minecraft"] = "rbxassetid://6361963422",
-    ["Blackout"]  = "rbxassetid://3748776946",
-    ["Osu!"]      = "rbxassetid://7151989073",
-}
-local hitsoundlibUI = {}
-for i,v in hitsoundlib do
-    hitsoundlibUI[v] = i
-end
 
 local skychangerbool = false
 local skyboxtable = {
@@ -332,11 +312,6 @@ local scbool = false
 local scgui = nil --later
 local scselected = nil
 
-allvars.doublejump = false
-local candbjump = false
-local dbjumplast = 0
-local dbjumpdelay = 0.2
-
 local desynctable = {}
 local desyncvis = nil
 allvars.desyncbool = false
@@ -362,16 +337,6 @@ allvars.changergrav = 95
 allvars.changerspeed = 20
 allvars.changerheight = 2
 allvars.changerjump = 3
-local charsemifly = false
-allvars.charsemiflydist = 6
-allvars.charsemiflyspeed = 30
-local semifly_bodyvel = nil
-local semifly_pos = CFrame.new()
-local semifly_posconnect = nil
-local instantleanOGfunc --changed later
-local instantleanMODfunc --changed later
-
-
 
 allvars.worldleaves = false
 allvars.worldgrass = false
@@ -381,7 +346,7 @@ allvars.worldclock = 14
 allvars.worldnomines = false
 allvars.worldnoweather = false
 local waterplatforms = Instance.new("Folder", workspace)
-waterplatforms.Name = "ArdourWaterPlatforms"
+waterplatforms.Name = "SkiddedWaterPlatforms"
 allvars.worldjesus = false
 allvars.worldambient = Color3.fromRGB(255,255,255)
 allvars.worldoutdoor = Color3.fromRGB(255,255,255)
@@ -401,17 +366,17 @@ local mdetect = false
 allvars.detectmods = false
 
 local valcache = {
-    ["6B45"] = 16,
+    ["6B45"] = 10,
     ["AS Val"] = 16,
-    ["ATC Key"] = 6,
-    ["Airfield Key"] = 6,
-    ["Altyn"] = 16,
-    ["Altyn Visor"] = 8,
-    ["Maska Visor"] = 8,
+    ["ATC Key"] = 4,
+    ["Airfield Key"] = 4,
+    ["Altyn"] = 10,
+    ["Altyn Visor"] = 6,
+    ["Maska Visor"] = 6,
     ["Attak-5 60L"] = 16,
     ["Bolts"] = 1,
-    ["Crane Key"] = 6,
-    ["DAGR"] = 12,
+    ["Crane Key"] = 4,
+    ["DAGR"] = 16,
     ["Duct Tape"] = 1,
     ["Fast MT"] = 10,
     ["Flare Gun"] = 20,
@@ -419,19 +384,19 @@ local valcache = {
     ["Garage Key"] = 4,
     ["Hammer"] = 1,
     ["JPC"] = 10,
-    ["Lighthouse Key"] = 6,
-    ["M4A1"] = 12,
+    ["Lighthouse Key"] = 4,
+    ["M4A1"] = 10,
     ["Nails"] = 1,
     ["Nuts"] = 1,
     ["Saiga 12"] = 8,
     ["Super Glue"] = 1,
-    ["Village Key"] = 2,
+    ["Village Key"] = 1,
     ["Wrench"] = 1,
     ["SPSh-44"] = 12,
     ["R700"] = 16,
-    ["AKMN"] = 12,
-    ["Mosin"] = 12,
-    ["SVD"] = 12,
+    ["AKMN"] = 8,
+    ["Mosin"] = 6,
+    ["SVD"] = 6,
     ["7.62x39AP"] = 0.15,
     ["7.62x54AP"] = 0,15,
 }
@@ -477,7 +442,7 @@ aimsnapline.Visible = false
 --gui setup--
 
 if _G.ardour then
-    Notify("Ardour", "Script is already loaded")
+    Notify("Sharkyz", "Script is already loaded")
     return
 end
 
@@ -648,7 +613,7 @@ end
 
 print('setting up gui')
 
-library:ChangeWeb("discord.gg/ardour")
+library:ChangeWeb("rathack.xyz Go Buy!")
 library:ChangeGame("Project Delta")
 
 local home = library:AddWindow('Home')
@@ -665,7 +630,7 @@ editwatermark = library.GUI.ChildAdded:Connect(function(ch)
     end
     editwatermark:Disconnect()
 end)
-local watermark = library:AddWatermark('Ardour Hub [BETA] ')
+local watermark = library:AddWatermark('Skidded Hub [SIGMA] ')
 watermark.AnchorPoint = Vector2.new(0.5, 0.5)
 watermark.Position = UDim2.new(0.5, 0, 0.05, 0)
 
@@ -742,7 +707,7 @@ saveconfig = function(cfgname)
         warn('saved config content:')
         print(output)
 
-        Notify("Ardour", "Saved config "..cfgname)
+        Notify("Sharkyz", "Saved config "..cfgname)
     end
 end
 function loadconfig(cfgname)
@@ -760,9 +725,9 @@ function loadconfig(cfgname)
 
         library.UpdateGui(allvars)
 
-        Notify("Ardour", "Loaded config "..cfgname)
+        Notify("Rathack?", "Loaded config "..cfgname)
     else
-        Notify("Ardour", "Cant find this config")
+        Notify("Skidded bum", "Cant find this config")
     end
 end
 function setasdefault(cfgname)
@@ -770,7 +735,7 @@ function setasdefault(cfgname)
     Notify("Ardour", "Set as default")
 end
 
-mainhome:AddLabel('The script version is "Whiskey - 2" ')
+mainhome:AddLabel('The script version is "Skidded Skibidi" ')
 mainhome:AddKeyBind('Toggle GUI', Enum.KeyCode.Insert, function() 
     if scriptloading then return end
     librarymaingui.Visible = not librarymaingui.Visible
@@ -1001,7 +966,7 @@ friendman:AddButton('Print friendlist (console)',function()
         print("No one in friendlist")
         return
     end
-    print("Ardour friendlist:")
+    print("sigma, friendlist:")
     for i,v in allvars.aimFRIENDLIST do
         print("["..i.."] "..v)
     end
@@ -1080,11 +1045,11 @@ cross:AddTextBox('File Name', nil, false, 5, function(a)
         if getcustomasset(a) ~= nil then
             allvars.crossimg = getcustomasset(a)
         else
-            Notify("Ardour Error", "File is not a image")
+            Notify("Askiderr Error", "File is not a image")
             return
         end
     else
-        Notify("Ardour Error", "Cant find the image")
+        Notify("Rip broski Error", "Cant find the image")
         return
     end
 end)
@@ -1194,16 +1159,6 @@ camer:AddSlider('Zoom FOV', 50, 0, allvars.zoomfov, function(c)
     allvars.zoomfov = c
 end)
 
-viewmod:AddToggle('SkinChanger menu', true, Enum.KeyCode.KeypadEight, function(v)
-    if scriptloading then return end
-    if librarymaingui.Visible == false then return end
-
-    scbool = v
-
-    if v then keylist_addkey("SkinChanger", Enum.KeyCode.KeypadEight.Name) else keylist_removekey("SkinChanger") end
-
-    scgui.Visible = v
-end)
 viewmod:AddSeparateBar()
 viewmod:AddToggle('Texture changer', not allvars.viewmodbool, nil, function(v)
     allvars.viewmodbool = v
@@ -2456,205 +2411,6 @@ workspace.Camera.ChildAdded:Connect(function(ch)
     end
 end)
 
-
--- third person --
-print("changing thirdperson roblox script")
-require(game.Players.LocalPlayer.PlayerScripts.PlayerModule.CameraModule.TransparencyController).Update = function(a1, a2) -- transparency = allvars.camthirdp and 1 or 0
-    local v14_3_ = workspace
-    local v14_2_ = v14_3_.CurrentCamera
-
-    local setto = 0
-    if allvars.camthirdp == false then
-        setto = 1
-    end
-
-    if v14_2_ then
-        v14_3_ = a1.enabled
-        if v14_3_ then
-            local v14_6_ = v14_2_.Focus
-            local v14_5_ = v14_6_.p
-            local v14_7_ = v14_2_.CoordinateFrame
-            v14_6_ = v14_7_.p
-            local v14_4_ = v14_5_ - v14_6_
-            v14_3_ = v14_4_.magnitude
-            v14_5_ = 2
-            v14_4_ = 0
-            v14_5_ = 0.500000
-            if v14_4_ < v14_5_ then
-                v14_4_ = 0
-            end
-            v14_5_ = a1.lastTransparency
-            if v14_5_ then
-                v14_5_ = 1
-                if v14_4_ < v14_5_ then
-                    v14_5_ = a1.lastTransparency
-                    v14_6_ = 0.950000
-                    if v14_5_ < v14_6_ then
-                        v14_6_ = a1.lastTransparency
-                        v14_5_ = v14_4_ - v14_6_
-                        v14_7_ = 2.800000
-                        v14_6_ = v14_7_ * a2
-                        local v14_9_ = -v14_6_
-                        local v14_8_ = v14_5_
-                        local v14_10_ = v14_6_
-                        local clamp = math.clamp
-                        v14_7_ = clamp(v14_8_, v14_9_, v14_10_)
-                        v14_5_ = v14_7_
-                        v14_7_ = a1.lastTransparency
-                        v14_4_ = v14_7_ + v14_5_
-                    else
-                        v14_5_ = true
-                        a1.transparencyDirty = v14_5_
-                    end
-                else
-                    v14_5_ = true
-                    a1.transparencyDirty = v14_5_
-                end
-            else
-                v14_5_ = true
-                a1.transparencyDirty = v14_5_
-            end
-            v14_7_ = v0_2_
-            v14_7_ = v14_4_
-            local v14_8_ = 2
-            v14_7_ = 0
-            v14_8_ = 1
-            v14_4_ = v14_5_
-            v14_5_ = a1.transparencyDirty
-            if not v14_5_ then
-                v14_5_ = a1.lastTransparency
-                if v14_5_ ~= v14_4_ then
-                    v14_5_ = pairs
-                    v14_6_ = a1.cachedParts
-                    v14_5_, v14_6_, v14_7_ = v14_5_(v14_6_)
-                    for v14_8_, v14_9_ in v14_5_, v14_6_, v14_7_ do
-                        local v14_11_ = v0_0_
-                        local v14_10_ = false
-                        if v14_10_ then
-                            v14_11_ = v0_0_
-                            v14_10_ = v14_11_.AvatarGestures
-                            if v14_10_ then
-                                v14_10_ = {}
-                                local Hat = Enum.AccessoryType.Hat
-                                local v14_12_ = true
-                                v14_10_[Hat] = v14_12_
-                                local Hair = Enum.AccessoryType.Hair
-                                v14_12_ = true
-                                v14_10_[Hair] = v14_12_
-                                local Face = Enum.AccessoryType.Face
-                                v14_12_ = true
-                                v14_10_[Face] = v14_12_
-                                local Eyebrow = Enum.AccessoryType.Eyebrow
-                                v14_12_ = true
-                                v14_10_[Eyebrow] = v14_12_
-                                local Eyelash = Enum.AccessoryType.Eyelash
-                                v14_12_ = true
-                                v14_10_[Eyelash] = v14_12_
-                                v14_11_ = v14_8_.Parent
-                                local v14_13_ = "Accessory"
-                                v14_11_ = v14_11_:IsA(v14_13_)
-                                if v14_11_ then
-                                    v14_13_ = v14_8_.Parent
-                                    v14_12_ = v14_13_.AccessoryType
-                                    v14_11_ = v14_10_[v14_12_]
-                                    if not v14_11_ then
-                                        v14_11_ = v14_8_.Name
-                                        if v14_11_ == "Head" then
-                                            v14_8_.LocalTransparencyModifier = setto
-                                        else
-                                            v14_11_ = 0
-                                            v14_8_.LocalTransparencyModifier = setto
-                                            v14_8_.LocalTransparencyModifier = setto
-                                        end
-                                    end
-                                end
-                                v14_11_ = v14_8_.Name
-                                if v14_11_ == "Head" then
-                                    v14_8_.LocalTransparencyModifier = setto
-                                else
-                                    v14_11_ = 0
-                                    v14_8_.LocalTransparencyModifier = setto
-                                    v14_8_.LocalTransparencyModifier = setto
-                                end
-                            else
-                                v14_8_.LocalTransparencyModifier = setto
-                            end
-                        else
-                            v14_8_.LocalTransparencyModifier = setto
-                        end
-                    end
-                    v14_5_ = false
-                    a1.transparencyDirty = v14_5_
-                    a1.lastTransparency = setto
-                end
-            end
-            v14_5_ = pairs
-            v14_6_ = a1.cachedParts
-            v14_5_, v14_6_, v14_7_ = v14_5_(v14_6_)
-            for v14_8_, v14_9_ in v14_5_, v14_6_, v14_7_ do
-                local v14_11_ = v0_0_
-                local v14_10_ = false
-                if v14_10_ then
-                    v14_11_ = v0_0_
-                    v14_10_ = v14_11_.AvatarGestures
-                    if v14_10_ then
-                        v14_10_ = {}
-                        local Hat = Enum.AccessoryType.Hat
-                        local v14_12_ = true
-                        v14_10_[Hat] = v14_12_
-                        local Hair = Enum.AccessoryType.Hair
-                        v14_12_ = true
-                        v14_10_[Hair] = v14_12_
-                        local Face = Enum.AccessoryType.Face
-                        v14_12_ = true
-                        v14_10_[Face] = v14_12_
-                        local Eyebrow = Enum.AccessoryType.Eyebrow
-                        v14_12_ = true
-                        v14_10_[Eyebrow] = v14_12_
-                        local Eyelash = Enum.AccessoryType.Eyelash
-                        v14_12_ = true
-                        v14_10_[Eyelash] = v14_12_
-                        v14_11_ = v14_8_.Parent
-                        local v14_13_ = "Accessory"
-                        v14_11_ = v14_11_:IsA(v14_13_)
-                        if v14_11_ then
-                            v14_13_ = v14_8_.Parent
-                            v14_12_ = v14_13_.AccessoryType
-                            v14_11_ = v14_10_[v14_12_]
-                            if not v14_11_ then
-                                v14_11_ = v14_8_.Name
-                                if v14_11_ == "Head" then
-                                    v14_8_.LocalTransparencyModifier = setto
-                                else
-                                    v14_11_ = 0
-                                    v14_8_.LocalTransparencyModifier = setto
-                                    v14_8_.LocalTransparencyModifier = setto
-                                end
-                            end
-                        end
-                        v14_11_ = v14_8_.Name
-                        if v14_11_ == "Head" then
-                            v14_8_.LocalTransparencyModifier = setto
-                        else
-                            v14_11_ = 0
-                            v14_8_.LocalTransparencyModifier = setto
-                            v14_8_.LocalTransparencyModifier = setto
-                        end
-                    else
-                        v14_8_.LocalTransparencyModifier = setto
-                    end
-                else
-                    v14_8_.LocalTransparencyModifier = setto
-                end
-            end
-            v14_5_ = false
-            a1.transparencyDirty = v14_5_
-            a1.lastTransparency = setto
-        end
-    end
-end
-
-
 --instant reload--
 print("loading instant reload function")
 instrelMODfunc = function(a1,a2)
@@ -2905,286 +2661,6 @@ instrelMODfunc = function(a1,a2)
     end
 end
 
---instant lean--
-print("loading instant lean functions")
-instantleanMODfunc = function(a1,a2,a3)
-    --a1 = player table 
-    if a2 == 0 then 
-        if a1.lean == 0 then return end
-    end
-    carv_9X7Z = a1.rs_Vehicle.CurrentSeat.Value
-    if carv_9X7Z then 
-        if a1.lean == 0 then return end
-    end
-    if a1.humanoid:GetState() == Enum.HumanoidStateType.Swimming then 
-        if a1.lean == 0 then return end
-    end
-    if a1.sprinting == true then 
-        if a1.lean == 0 then return end
-    end
-    
-    if a2 == a1.lean then 
-        a1.lean = 0
-    else 
-        a1.lean = a2
-    end
-    
-    springs_R2D2 = a1.springs
-    lalpha_C3PO = springs_R2D2.leanAlpha
-    springs_R2D2.leanAlpha.Speed = 15
-    currentlean_BB8 = a1.lean
-    vectorposidk_VADER = Vector3.new(-currentlean_BB8, 0,0)
-    lalpha_C3PO.Target = vectorposidk_VADER
-    valuetoserver_YODA = nil
-    
-    if lalpha_C3PO.Target.X == 1 then 
-        valuetoserver_YODA = true
-    elseif lalpha_C3PO.Target.X == -1 then
-        valuetoserver_YODA = false
-    end
-
-    game.ReplicatedStorage.Remotes.UpdateLeaning:FireServer(valuetoserver_YODA)
-end
-instantleanOGfunc = function(a1,a2,a3)
-    --a1 = player table 
-    if a2 == 0 then 
-        if a1.lean == 0 then return end
-    end
-    carv_9X7Z = a1.rs_Vehicle.CurrentSeat.Value
-    if carv_9X7Z then 
-        if a1.lean == 0 then return end
-    end
-    if a1.humanoid:GetState() == Enum.HumanoidStateType.Swimming then 
-        if a1.lean == 0 then return end
-    end
-    if a1.sprinting == true then 
-        if a1.lean == 0 then return end
-    end
-    
-    if a2 == a1.lean then 
-        a1.lean = 0
-    else 
-        a1.lean = a2
-    end
-    
-    springs_R2D2 = a1.springs
-    lalpha_C3PO = springs_R2D2.leanAlpha
-    springs_R2D2.leanAlpha.Speed = 5
-    currentlean_BB8 = a1.lean
-    vectorposidk_VADER = Vector3.new(-currentlean_BB8, 0,0)
-    lalpha_C3PO.Target = vectorposidk_VADER
-    valuetoserver_YODA = nil
-    
-    if lalpha_C3PO.Target.X == 1 then 
-        valuetoserver_YODA = true
-    elseif lalpha_C3PO.Target.X == -1 then
-        valuetoserver_YODA = false
-    end
-
-    game.ReplicatedStorage.Remotes.UpdateLeaning:FireServer(valuetoserver_YODA)
-end
-
-
---hitsound-- hitsound method by ds: _hai_hai
-print("loading hitsound")
-localplayer.CharacterAdded:Connect(function(lchar)
-    if localplayer.PlayerGui:WaitForChild("MainGui") then
-        localplayer.PlayerGui.MainGui.ChildAdded:Connect(function(Sound)
-            if Sound:IsA("Sound") and allvars.hitsoundbool then
-                if Sound.SoundId == "rbxassetid://4585351098" or Sound.SoundId == "rbxassetid://4585382589" then --headshot
-                    Sound.SoundId = hitsoundlib[allvars.hitsoundhead]
-                elseif Sound.SoundId == "rbxassetid://4585382046" or Sound.SoundId == "rbxassetid://4585364605" then --bodyshot
-                    Sound.SoundId = hitsoundlib[allvars.hitsoundbody]
-                end
-            end
-        end)
-    end
-end)
-localplayer.PlayerGui.MainGui.ChildAdded:Connect(function(Sound)
-    if Sound:IsA("Sound") and allvars.hitsoundbool then
-        if Sound.SoundId == "rbxassetid://4585351098" or Sound.SoundId == "rbxassetid://4585382589" then --headshot
-            Sound.SoundId = hitsoundlib[allvars.hitsoundhead]
-        elseif Sound.SoundId == "rbxassetid://4585382046" or Sound.SoundId == "rbxassetid://4585364605" then --bodyshot
-            Sound.SoundId = hitsoundlib[allvars.hitsoundbody]
-        end
-    end
-end)
-
-
---esp map--
-print("loading espmap function")
-handleESPMAP = function(bool)
-    if bool then
-        map = game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.MainFrame.Maps.EstonianBorderMap
-        mapFrame = game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.MainFrame
-        mapFrame.Size = UDim2.fromScale(1, 1)
-        mapFrame.Position = UDim2.new(0.5, 0, 0.49, 0)
-
-        mapFrame.Parent.Visible = true
-        game.UserInputService.MouseIconEnabled = true
-        game.Players.LocalPlayer.PlayerGui.MainGui.ModalButton.Modal = true
-
-        for _,v in ipairs(mapFrame.Markers:GetChildren()) do
-            v:Destroy()
-        end
-
-        selfMarker = game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.MainFrame.MarkerDotTemplate:Clone()
-        selfMarker.Name = "SelfMarker"
-        selfMarker.Visible = true
-        selfMarker.Parent = game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.MainFrame.Markers
-        selfMarker.TextLabel.Visible = true
-        espmapmarkers.Me = {
-            playerRef = game.Players.LocalPlayer,
-            markerRef = selfMarker,
-        }
-
-        for _,v in ipairs(game.Players:GetChildren()) do
-            if v ~= localplayer then
-                plrMarker = game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.MainFrame.MarkerDotTemplate:Clone()
-                plrMarker.ImageColor3 = Color3.fromRGB(227, 36, 36)
-                plrMarker.Name = "TeamMarker"
-                plrMarker.Visible = true
-                plrMarker.TextLabel.Text = v.Name
-                plrMarker.TextLabel.Visible = true
-                plrMarker.TextLabel.Size = UDim2.fromScale(2, 0.5)
-                plrMarker.TextLabel.Position = UDim2.fromScale(-0.5, 0)
-                plrMarker.Parent = game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.MainFrame.Markers
-                espmapmarkers[v.Name] = {
-                    playerRef = v,
-                    markerRef = plrMarker,
-                }
-            end
-        end
-        
-        task.spawn(function()
-            while task.wait(0.1) do
-                if espmapactive == false then return end
-
-                for ind, markerData in espmapmarkers do
-                    if markerData.markerRef == nil then
-                        table.remove(espmapmarkers, ind)
-                    else
-                        local playerRef = markerData.playerRef
-                        if playerRef then
-                            local character = playerRef.Character
-                            if character then
-                                local chpos = game.ReplicatedStorage.Players:FindFirstChild(playerRef.Name).Status.UAC:GetAttribute("LastVerifiedPos")
-                                local xPos = (chpos.X - 208) / map:GetAttribute("SizeReal")
-                                local zPos = (chpos.Z + 203) / map:GetAttribute("SizeReal")
-                                markerData.markerRef.Position = UDim2.new(0.5 + xPos, 0, 0.5 + zPos, 0)
-                                markerData.markerRef.Visible = true
-                                if markerData.playerRef ~= localplayer then 
-                                    if table.find(allvars.aimFRIENDLIST, markerData.playerRef.Name) ~= nil then
-                                        markerData.markerRef.ImageColor3 = Color3.fromRGB(102, 245, 66)
-                                    else
-                                        markerData.markerRef.ImageColor3 = Color3.fromRGB(227, 36, 36)
-                                    end
-                                end
-                            else
-                                markerData.markerRef.Visible = false
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-
-        mapFrame.Markers.Visible = true
-    else
-        if game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.Visible == true then
-            game.Players.LocalPlayer.PlayerGui.MainGui.MainFrame.MapFrame.Visible = false
-            game.Players.LocalPlayer.PlayerGui.MainGui.ModalButton.Modal = false
-            game.UserInputService.MouseIconEnabled = false
-        end
-    end
-end
-
-
--- semi fly --
-print("loading semifly functions")
-function fly_move(dir)
-    local hrp = localplayer.Character:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-
-	local newPos = hrp.CFrame + (dir * 1)
-	hrp.CFrame = newPos
-end
-function fly_getclosestpoint()
-    local hrp = localplayer.Character:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-
-	local dirs = {
-        Vector3.new(1, 0, 0),
-        Vector3.new(-1, 0, 0),
-        Vector3.new(0, 1, 0),
-        Vector3.new(0, -1, 0),
-        Vector3.new(0, 0, 1),
-        Vector3.new(0, 0, -1),
-        Vector3.new(1, 1, 0),
-        Vector3.new(1, -1, 0),
-        Vector3.new(-1, 1, 0),
-        Vector3.new(-1, -1, 0),
-        Vector3.new(1, 0, 1),
-        Vector3.new(1, 0, -1),
-        Vector3.new(-1, 0, 1),
-        Vector3.new(-1, 0, -1),
-        Vector3.new(0, 1, 1),
-        Vector3.new(0, 1, -1),
-        Vector3.new(0, -1, 1),
-        Vector3.new(0, -1, -1),
-        Vector3.new(1, 1, 1),
-        Vector3.new(1, 1, -1),
-        Vector3.new(1, -1, 1),
-        Vector3.new(1, -1, -1),
-        Vector3.new(-1, 1, 1),
-        Vector3.new(-1, 1, -1),
-        Vector3.new(-1, -1, 1),
-        Vector3.new(-1, -1, -1)
-    }
-
-	local fcp = nil
-	local cd = math.huge
-
-    local ignorl = {localplayer.Character, wcamera}
-
-    for _, player in ipairs(game.Players:GetPlayers()) do
-        if player.Character then
-            table.insert(ignorl, player.Character)
-        end
-    end
-
-	for _, dir in ipairs(dirs) do
-		local ray = Ray.new(hrp.Position, dir * 200)
-		local part, pos = workspace:FindPartOnRayWithIgnoreList(ray, ignorl)
-		if part and pos then
-			local d = (hrp.Position - pos).Magnitude
-			if d < cd then
-				cd = d
-				fcp = pos
-			end
-		end
-	end
-
-	return fcp
-end
-function fly_getoffset(dir)
-	local offset = Vector3.new(0.1, 0.1, 0.1)
-	if dir.X > 0 then
-		offset = Vector3.new(0.1, 0, 0)
-	elseif dir.X < 0 then
-		offset = Vector3.new(-0.1, 0, 0)
-	elseif dir.Y > 0 then
-		offset = Vector3.new(0, 0.1, 0)
-	elseif dir.Y < 0 then
-		offset = Vector3.new(0, -0.1, 0)
-	elseif dir.Z > 0 then
-		offset = Vector3.new(0, 0, 0.1)
-	elseif dir.Z < 0 then
-		offset = Vector3.new(0, 0, -0.1)
-	end
-	return offset
-end
-
 --anticheat bypass--
 print("loading client anticheat bypass")  --method by discord.gg/exothium
 function handleClientAntiCheatBypass()
@@ -3208,97 +2684,6 @@ function handleClientAntiCheatBypass()
     ACBYPASS_SYNC = true
 end
 handleClientAntiCheatBypass()
-
-
---selftrack(ping check)
-print("loading ping check")
-for i = 10, 1000, 10 do
-    --selftrack_data[i] = localplayer.Character.Head.Position
-    table.insert(selftrack_data, {ms = i, vpos = localplayer.Character.HumanoidRootPart.Position + Vector3.new(0, 1.5, 0)})
-end
-local function updateselfpos()
-    for i = #selftrack_data, 1, -1 do
-        selftrack_data[i].ms = selftrack_data[i].ms + 10
-    end
-    if selftrack_data[#selftrack_data].ms > 1000 then
-        table.remove(selftrack_data, #selftrack_data)
-    end
-    table.insert(selftrack_data, 1, {ms = 10, vpos = localplayer.Character.HumanoidRootPart.Position + Vector3.new(0, 1.5, 0)})
-end
-
-
---thirdperson fix + desync camera fix--
-local function ThirdPersonFix()
-    local mt = getrawmetatable(game)
-    local oldIndex = mt.__newindex
-    setreadonly(mt, false)
-    mt.__newindex = newcclosure(function(self, index, value)
-        if tostring(self) == "Humanoid" and index == "CameraOffset" then
-            local offset = Vector3.zero
-
-            if allvars.desyncbool then
-                if allvars.desyncPos then
-                    offset += Vector3.new(-allvars.desynXp, -allvars.desynYp, -allvars.desynZp)
-                end
-                if allvars.desyncOr then
-                    -- to make
-                end
-            end
-
-            if allvars.camthirdp then
-                offset += Vector3.new(allvars.camthirdpX, allvars.camthirdpY, allvars.camthirdpZ)
-            end
-
-            return oldIndex(self, index, offset)
-        end
-        return oldIndex(self, index, value)
-    end)
-    setreadonly(mt, true)
-end
-ThirdPersonFix()
-
-
---double jump--
-uis.JumpRequest:Connect(function()
-    if not allvars.doublejump then return end
-    
-    local ctime = tick()
-    if ctime - dbjumplast < dbjumpdelay then return end
-    
-    local state = localplayer.Character.Humanoid:GetState()
-    if state == Enum.HumanoidStateType.Jumping or state == Enum.HumanoidStateType.Freefall then
-        if candbjump then
-            localplayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-            candbjump = false
-            dbjumplast = ctime
-        end
-    end
-end)
-localplayer.Character.Humanoid.StateChanged:Connect(function(_, state)
-    if not allvars.doublejump then return end
-    
-    if state == Enum.HumanoidStateType.Jumping then
-        candbjump = true
-        dbjumplast = tick()
-    elseif state == Enum.HumanoidStateType.Landed then
-        candbjump = false
-    end
-end)
-localplayer.CharacterAdded:Connect(function()
-    task.wait(1.5)
-
-    localplayer.Character.Humanoid.StateChanged:Connect(function(_, state)
-        if not allvars.doublejump then return end
-        
-        if state == Enum.HumanoidStateType.Jumping then
-            candbjump = true
-            dbjumplast = tick()
-        elseif state == Enum.HumanoidStateType.Landed then
-            candbjump = false
-        end
-    end)
-end)
-
 
 --upangle editor--
 local mt = getrawmetatable(game)
@@ -3358,355 +2743,6 @@ do
         return arg1, arg2, arg3
     end
 end
-
-
---skin changer--
-print("loading skinchanger")
-function createskinchangergui()
-    local a, b
-    a = Instance.new"Frame"
-    a.Name = "SkinMain"
-    a.Size = UDim2.new(0.193, 0, 0.478, 0)
-    a.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    a.Position = UDim2.new(0.709, 0, 0.499, 0)
-    a.BorderSizePixel = 0
-    a.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    a.AnchorPoint = Vector2.new(0, 0.5)
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.03, 0)
-    b.Parent = a
-    b = Instance.new"Frame"
-    b.Name = "Title"
-    b.Size = UDim2.new(0.9995077, 0, 0.0345098, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 0.8
-    b.Position = UDim2.new(3e-07, 0, 0, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    b.Parent = a
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.5, 0)
-    b.Parent = a.Title
-    b = Instance.new"TextLabel"
-    b.Name = "Label"
-    b.Size = UDim2.new(1, 0, 0.8636364, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0, 0, 0.0950089, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.FontSize = 5
-    b.TextSize = 14
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "Skin Changer v0.1"
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextScaled = true
-    b.Parent = a.Title
-    b = Instance.new"Frame"
-    b.Name = "Guns"
-    b.Size = UDim2.new(0.9502814, 0, 0.4, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 0.85
-    b.Position = UDim2.new(0.0235427, 0, 0.0972549, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    b.Parent = a
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.03, 0)
-    b.Parent = a.Guns
-    b = Instance.new"ScrollingFrame"
-    b.Name = "Bar"
-    b.Size = UDim2.new(0.9414414, 0, 0.9058824, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0.0292793, 0, 0.0509804, 0)
-    b.Active = true
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.ScrollingDirection = 2
-    b.CanvasSize = UDim2.new(0, 0, 1, 0)
-    b.ScrollBarThickness = 4
-    b.Parent = a.Guns
-    b = Instance.new"UIListLayout"
-    b.SortOrder = 2
-    b.Wraps = true
-    b.HorizontalFlex = 1
-    b.VerticalFlex = 1
-    b.Padding = UDim.new(0.005, 0)
-    b.Parent = a.Guns.Bar
-    b = Instance.new"TextLabel"
-    b.Name = "GunsLabel"
-    b.Size = UDim2.new(0.8946342, 0, 0.0407843, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0.0513673, 0, 0.0454902, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.FontSize = 5
-    b.TextSize = 14
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "Your guns : "
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextScaled = true
-    b.Parent = a
-    b = Instance.new"Frame"
-    b.Name = "Skins"
-    b.Size = UDim2.new(0.9502814, 0, 0.4188235, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 0.85
-    b.Position = UDim2.new(0.0235427, 0, 0.5631372, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    b.Parent = a
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.03, 0)
-    b.Parent = a.Skins
-    b = Instance.new"ScrollingFrame"
-    b.Name = "Bar"
-    b.Size = UDim2.new(0.9414414, 0, 0.9058824, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0.0292793, 0, 0.0509804, 0)
-    b.Active = true
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.ScrollingDirection = 2
-    b.CanvasSize = UDim2.new(0, 0, 2.5, 0)
-    b.ScrollBarThickness = 4
-    b.Parent = a.Skins
-    b = Instance.new"UIListLayout"
-    b.SortOrder = 2
-    b.Wraps = true
-    b.HorizontalFlex = 1
-    b.VerticalFlex = 1
-    b.Padding = UDim.new(0.005, 0)
-    b.Parent = a.Skins.Bar
-    b = Instance.new"TextLabel"
-    b.Name = "SkinsLabel"
-    b.Size = UDim2.new(0.8946342, 0, 0.0407843, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0.0513673, 0, 0.5129412, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.FontSize = 5
-    b.TextSize = 14
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "Available skins (For None) : "
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextScaled = true
-    b.Parent = a
-    b = Instance.new"UIStroke"
-    b.ApplyStrokeMode = 1
-    b.Thickness = 3.5999999
-    b.Color = Color3.fromRGB(75, 118, 197)
-    b.Parent = a
-    b = Instance.new"Configuration"
-    b.Name = "Templates"
-    b.Parent = a
-    b = Instance.new"Frame"
-    b.Name = "SkinTemplate"
-    b.Size = UDim2.new(0, 411, 0, 55)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
-    b.Parent = a.Templates
-    b = Instance.new"TextLabel"
-    b.Name = "SkinName"
-    b.Size = UDim2.new(0.5425791, 0, 0.6363636, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0.0358852, 0, 0.1794467, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.FontSize = 5
-    b.TextStrokeTransparency = 0
-    b.TextSize = 14
-    b.RichText = true
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "White Death"
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextXAlignment = 0
-    b.TextScaled = true
-    b.Parent = a.Templates.SkinTemplate
-    b = Instance.new"TextButton"
-    b.Name = "Set"
-    b.Size = UDim2.new(0.377129, 0, 0.6363636, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.Position = UDim2.new(0.5926771, 0, 0.1794467, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(135, 255, 92)
-    b.FontSize = 5
-    b.TextStrokeTransparency = 0
-    b.TextSize = 14
-    b.RichText = true
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "Set"
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextScaled = true
-    b.Parent = a.Templates.SkinTemplate
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.2, 0)
-    b.Parent = a.Templates.SkinTemplate.Set
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.1, 0)
-    b.Parent = a.Templates.SkinTemplate
-    b = Instance.new"UIAspectRatioConstraint"
-    b.AspectRatio = 7.3200002
-    b.DominantAxis = 1
-    b.Parent = a.Templates.SkinTemplate
-    b = Instance.new"Frame"
-    b.Name = "GunTemplate"
-    b.Size = UDim2.new(0, 411, 0, 55)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
-    b.Parent = a.Templates
-    b = Instance.new"TextLabel"
-    b.Name = "GunName"
-    b.Size = UDim2.new(0.5425791, 0, 0.6363636, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.BackgroundTransparency = 1
-    b.Position = UDim2.new(0.0358852, 0, 0.1794467, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    b.FontSize = 5
-    b.TextStrokeTransparency = 0
-    b.TextSize = 14
-    b.RichText = true
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "TFZ98"
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextXAlignment = 0
-    b.TextScaled = true
-    b.Parent = a.Templates.GunTemplate
-    b = Instance.new"TextButton"
-    b.Name = "Select"
-    b.Size = UDim2.new(0.377129, 0, 0.6363636, 0)
-    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    b.Position = UDim2.new(0.5926771, 0, 0.1794467, 0)
-    b.BorderSizePixel = 0
-    b.BackgroundColor3 = Color3.fromRGB(135, 255, 92)
-    b.FontSize = 5
-    b.TextStrokeTransparency = 0
-    b.TextSize = 14
-    b.RichText = true
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Text = "Select"
-    b.TextWrapped = true
-    b.TextWrap = true
-    b.Font = 100
-    b.TextScaled = true
-    b.Parent = a.Templates.GunTemplate
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.2, 0)
-    b.Parent = a.Templates.GunTemplate.Select
-    b = Instance.new"UICorner"
-    b.Archivable = false
-    b.CornerRadius = UDim.new(0.1, 0)
-    b.Parent = a.Templates.GunTemplate
-    b = Instance.new"UIAspectRatioConstraint"
-    b.AspectRatio = 7.3200002
-    b.DominantAxis = 1
-    b.Parent = a.Templates.GunTemplate
-    return a
-end
-function sc_setskin(skin)
-    local gun = scselected
-    gun.ItemProperties:SetAttribute("Skin", skin.Name)
-
-    for _,att in ipairs(gun.Attachments:GetDescendants()) do
-        if att:IsA("StringValue") and att:FindFirstChild("ItemProperties") then
-            att.ItemProperties:SetAttribute("Skin", skin.Name)
-        end
-    end
-end
-function sc_additem(gui, obj, itemtype)
-    if itemtype == "Skin" then
-        local temp = gui.Templates.SkinTemplate:Clone()
-        temp.Name = obj.Name
-        temp.SkinName.Text = obj.name
-        temp.Parent = gui.Skins.Bar
-        temp.Set.Activated:Connect(function()
-            sc_setskin(obj)
-            Notify("Skin Changer", "Set " .. scselected.Name .. " skin to " .. obj.Name)
-        end)
-    else
-        local temp = gui.Templates.GunTemplate:Clone()
-        temp.Name = obj.Name
-        temp.GunName.Text = obj.name
-        temp.Parent = gui.Guns.Bar
-        temp.Select.Activated:Connect(function()
-            scselected = obj
-            sc_loadskins(gui, obj)
-        end)
-    end
-end
-function sc_removeitem(gui, gunname)
-    if scselected ~= nil and scselected.Name == gunname then
-        scselected = nil
-        sc_clearskins(gui)
-    end
-    local gunitem = gui.Guns.Bar:FindFirstChild(gunname)
-    if gunitem then
-        gunitem:Destroy()
-    end
-end
-function sc_clearskins(gui)
-    for _,delet in ipairs(gui.Skins.Bar:GetChildren()) do
-        if delet:IsA("Frame") then  
-            delet:Destroy()
-        end
-    end
-end
-function sc_loadskins(gui, gun)
-    sc_clearskins(gui)
-
-    local skinsfold = game.ReplicatedStorage.Skins:FindFirstChild(gun.Name)
-    if skinsfold then
-        for _, skin in ipairs(skinsfold:GetChildren()) do
-            sc_additem(gui, skin, "Skin")
-        end
-    end
-end
-function skinchangerhandler()
-    local skingui = createskinchangergui()
-    skingui.Visible = false
-    skingui.Parent = library.GUI
-    scgui = skingui
-
-    for _,gun in ipairs(game.ReplicatedStorage.Players:FindFirstChild(localplayer.Name).Inventory:GetChildren()) do
-        sc_additem(skingui, gun, "Gun")
-    end
-
-    game.ReplicatedStorage.Players:FindFirstChild(localplayer.Name).Inventory.ChildAdded:Connect(function(child)
-        sc_additem(skingui, child, "Gun")
-    end)
-    game.ReplicatedStorage.Players:FindFirstChild(localplayer.Name).Inventory.ChildRemoved:Connect(function(child)
-        sc_removeitem(skingui, child.Name)
-    end)
-end
-skinchangerhandler()
-
 
 --global cycle--
 print("loading global cycles")
