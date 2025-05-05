@@ -1397,7 +1397,7 @@ vmisc:AddToggle('Mod notify', not allvars.detectmods, nil, function(v)
 end)
 vmisc:AddToggle('Revive boss', true, nil, function(v)
     if scriptloading then return end
-    if not workspace:FindFirstChild("Boss") then Notify("Ardour", "Use this only in lobby") end
+    if not workspace:FindFirstChild("Boss") then Notify("Sharkyz", "Use this only in lobby") end
 
     if v then
         local boss = workspace.Boss
@@ -3347,11 +3347,11 @@ end)
 scriptloading = false
 
 --load default-- 
-if isfile("ardourdefault.txt") then
-    local cfgname = readfile("ardourdefault.txt")
+if isfile("sharkyzdefault.txt") then
+    local cfgname = readfile("sharkyzdefault.txt")
     loadconfig(cfgname)
 end
 
 print("loaded")
-Notify("Ardour", "Script loaded")
+Notify("sharkyz", "Script loaded")
 game.CoreGui.PCR_1.Enabled = not game.CoreGui.PCR_1.Enabled
